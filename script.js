@@ -14,12 +14,6 @@ function drawSnakePixel(pixel){
     ctx.fillRect(pixel.x, pixel.y, 10, 10)
     ctx.strokeRect(pixel.x,pixel.y,10,10)
 }
-function clearSnakePixel(){
-    ctx.fillStyle = "white"
-    ctx.strokeStyle = "white"
-    ctx.fillRect(snake[0].x -10, snake.y, 10, 10)
-    ctx.strokeRect(snake[0].x -10,snake.y,10,10)
-}
 function drawSnake(){
     snake.forEach(drawSnakePixel)
 }
