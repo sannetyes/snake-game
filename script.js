@@ -14,21 +14,26 @@ function drawSnakePixel(pixel){
     ctx.fillRect(pixel.x, pixel.y, 10, 10)
     ctx.strokeRect(pixel.x,pixel.y,10,10)
 }
+function clear (){/* 
+    ctx.fillStyle = "white"
+    ctx.strokeStyle = "white"
+    ctx.fillRect(snake[4].x,200,10,10)
+    ctx.strokeRect(snake[4].x,200,10,10) */
+    ctx.clearRect(snake[4].x,200,10,10)
+}
 function drawSnake(){
     snake.forEach(drawSnakePixel)
 }
 function actionSnake(){
     setTimeout(() => {
-            snake.pop()
             snake.unshift({x:(snake[0].x + 10), y:200})
             console.log(snake)
             drawSnake()
+            snake.forEach(clear)
             if( i <(canvas.clientWidth) / 10 ){
+                snake.pop()
                 actionSnake()
             }
     },2000)
 }
-function main(){
-    actionSnake()
-}
-main()
+actionSnake()
