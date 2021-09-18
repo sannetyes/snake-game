@@ -31,3 +31,4 @@ function actionSnake(){
 function main(){
     actionSnake()
 }
+main()
