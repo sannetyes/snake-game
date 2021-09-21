@@ -18,21 +18,25 @@ function drawSnake(){
 }
 let up = false
 let down = false
-let right = false
+let right = true
 let left = false
 window.addEventListener('keydown', e => {
     switch (e.key) {
       case 'ArrowUp':
         up = true
+        down=right=left=false
         break
       case 'ArrowDown':
         down = true
+        up=right=left=false
         break
       case 'ArrowLeft':
         left = true
+        up=down=right=false
         break
       case 'ArrowRight':
         right = true
+        up=down=left=false
         break
     }
   })
