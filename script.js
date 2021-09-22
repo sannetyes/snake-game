@@ -23,18 +23,22 @@ let left = false
 window.addEventListener('keydown', e => {
     switch (e.key) {
       case 'ArrowUp':
+        if(down) break
         up = true
         down=right=left=false
         break
       case 'ArrowDown':
+        if (up) break
         down = true
         up=right=left=false
         break
       case 'ArrowLeft':
+        if (right) break
         left = true
         up=down=right=false
         break
       case 'ArrowRight':
+        if (left) break
         right = true
         up=down=left=false
         break
@@ -42,17 +46,21 @@ window.addEventListener('keydown', e => {
   })
 function actionSnake(){
     setTimeout(() => {
-        if (up){
+        if (up && !down){
             snake.unshift({x:snake[0].x ,y: snake[0].y - 10})
+            down = false
         }
-        else if (down){
+        else if (down && !up){
             snake.unshift({x:snake[0].x , y:snake[0].y + 10})
+            up = false
         }
         else if(right){
             snake.unshift({x:snake[0].x + 10, y:snake[0].y})
+            left = false 
         }
         else if (left){
             snake.unshift({x:(snake[0].x - 10), y:snake[0].y})
+            right = false
         }
         console.log(snake)
         ctx.fillStyle = "#fff"
